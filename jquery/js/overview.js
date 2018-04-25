@@ -25,6 +25,16 @@ var overview = (function () {
         return newTransactions;
     };
 
+    var findTransactionsWithMaxAmount = function (transactions, max) {
+        var newTransactions = [];
+        for (var i = 0; i < transactions.length; i++) {
+            if (transactions[i].trx_ammount <= max) {
+                newTransactions.push(transactions[i]);
+            }
+        }
+        return newTransactions;
+    };
+
     //make buttons and stuff clicky
     var bindListeners = function () {
         $("#refresh-balance-chart").on("click", refreshCurrentBalanceChart);
@@ -44,7 +54,20 @@ var overview = (function () {
     var refreshAmountStats = function () {
         var year = $("#amount-stats-year").val();
         service.fetchTransactionsByDate(accounts[0].account_nbr, year + "-01-01", year + "-12-31", function (response) {
-            transactions = findTransactionsWithMinAmount(response.transactions, $("#amount-stats-min").val());
+
+            var selector = $(".amount-stats-type");
+            var selection = selector[0].options[selector[0].selectedIndex].value;
+
+            console.log(selection);
+
+            if (selection === 2) {
+                transactions = findTransactionsWithMinAmount(response.transactions, $("#amount-stats-min").val());
+            } else if (selection === 3) {
+                transactions = findTransactionsWithMaxAmount(response.transactions, $("#amount-stats-max").val());
+            } else {
+                transactions = findTransactionsWithMinAmount(findTransactionsWithMaxAmount(response.transactions, $("#amount-stats-max").val()), $("#amount-stats-min").val());
+            }
+
             $(".amount-stats-transactions").empty();
             $(".amount-stats-transactions").append("<ul class='transactions'></ul>");
             for (var i = 0; i < transactions.length; i++) {
