@@ -38,6 +38,9 @@ var transactions = (function () {
         $(".get-more").on("click", function () {
             getMoreTransactions();
         });
+        $(".to-top").on("click", function () {
+            $('html,body').scrollTop(0);
+        });
     };
 
     //fetch transactions and add to list in UI
@@ -70,7 +73,7 @@ var transactions = (function () {
 
         if (reExp.test(url)) {
             // update
-            var reExp = new RegExp("[\?&]" + key + "=([^&#]*)");
+            reExp = new RegExp("[\?&]" + key + "=([^&#]*)");
             var delimiter = reExp.exec(url)[0].charAt(0);
             url = url.replace(reExp, delimiter + key + "=" + val);
         } else {

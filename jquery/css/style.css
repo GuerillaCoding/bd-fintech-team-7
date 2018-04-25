@@ -93,6 +93,11 @@ header .triangle3 {
 .nav-link {
     text-decoration: none;
     color: black;
+    text-decoration: underline;
+}
+
+.nav-link:hover{
+    color: #BACCD6;   
 }
 
 .wrapper {
@@ -227,6 +232,11 @@ header .triangle3 {
 #front .account div {
     width: 33.3%;
     float: left;
+    text-decoration: underline;
+}
+
+#front .account div:hover{
+        color: #BACCD6;   
 }
 
 #front .chart {
@@ -243,6 +253,7 @@ header .triangle3 {
 #transactions .account a {
     text-decoration: none;
     color: #000;
+    text-decoration: underline;
 }
 
 #transactions .transactions {
@@ -263,12 +274,20 @@ header .triangle3 {
     font-size: 1rem;
 }
 
+#transactions .account a:hover{
+    color: #BACCD6;   
+}
+
 #transactions .transactions .transaction:nth-child(even) {
     background: #fff;
 }
 
 #transactions .balance {
     font-size: 2rem;
+}
+
+#transactions .to-top {
+    float: right;
 }
 
 /*END: kontobevægelser*/

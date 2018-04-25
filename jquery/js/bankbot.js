@@ -5,8 +5,9 @@ $(document).ready(function () {
 var bot = (function () {
     "use strict";
 
-    var annoyanceCounter;
+    var annoyanceCounter = 0;
     var annoyanceBurst = 3;
+    var lastMeessage = "";
 
     var _init = function () {
         insertChatMessage("bot", "Hej, du snakker med Banky Bot");
@@ -28,6 +29,13 @@ var bot = (function () {
             return false;
         }
         $("#user-msg").val("");
+
+        if (lastMeessage === clientmsg) {
+            annoyanceCounter++;
+            //console.log("Same! " + sameInRow);
+        }
+        lastMeessage = clientmsg;
+
         insertChatMessage("self", clientmsg);
         service.fetchBotIntent(clientmsg, function (response) {
             let handledResponse = handleBotResponse(response);
@@ -56,6 +64,10 @@ var bot = (function () {
         });
         let intentMsg;
         console.log(response);
+        console.log(annoyanceCounter);
+        if (annoyanceCounter >= annoyanceBurst) {
+            return "Hvad vil du mig?!";
+        }
         switch (intent) {
             case "Budgetkonto":
                 annoyanceCounter = 0;
@@ -83,9 +95,6 @@ var bot = (function () {
         responseList.push("Hej, hvordan kan jeg hjælpe?");
         responseList.push("Øh hejsa du");
         responseList.push("Hej, hvad leder du efter?");
-        if (annoyanceCounter >= annoyanceBurst) {
-            return "Hvad vil du mig?!";
-        }
         let idx = Math.floor(Math.random() * responseList.length);
         return responseList[idx];
     };
