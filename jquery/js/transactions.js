@@ -38,6 +38,9 @@ var transactions = (function () {
         $(".get-more").on("click", function () {
             getMoreTransactions();
         });
+        $(".to-top").on("click", function () {
+            $('html,body').scrollTop(0);
+        });
     };
 
     //fetch transactions and add to list in UI
