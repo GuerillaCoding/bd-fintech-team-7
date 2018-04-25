@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/vendor/jquery-3.1.0.min.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/secret.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="triangle1"></div>
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+    <a href="index.html">Pengebanken</a>
+</header>
+<h1 style="color: #FFF; margin-left: 2rem; margin-bottom: -15px">Låneberegner</h1>
+<div class="wrapper" id="calculator">
+
+    <div class="main">
+        <form>
+            <div>
+                <p>Lånebeløb</p>
+                <input class="Loan" type="text">
+            </div>
+            <div>
+                <p>Engangsomkostninger</p>
+                <input class="initalcost" type="text">
+            </div>
+            <div class="dropdown">
+                <p>Løbetid</p>
+                <select>
+                    <option>1 år</option>
+                    <option>2 år</option>
+                    <option>5 år</option>
+                    <option>10 år</option>
+                    <option>12 år</option>
+                    <option>15 år</option>
+                    <option>20 år</option>
+                    <option>30 år</option>
+                </select>
+            </div>
+            <div class="percent">
+                <p>Årlig rente</p>
+                <input class="yearlyrent" type="text">
+            </div>
+            <div>
+                <p>Månedlig ydelse</p>
+                <input type="text">
+            </div>
+            <div class="percent">
+                <p>Skatteprocent</p>
+                <input type="text">
+            </div>
+        </form>
+        <button onclick="calculate()">Beregn</button>
+    </div>
+    <div class="result">
+        <p>Resultat</p>
+        <ul>
+            <li>
+                <div class="rent">Nominel rente</div>
+                <div class="rent_data">0%</div>
+            </li>
+            <li>
+                <div class="usableAmount">Disponiblet beløb</div>
+                <div class="usableAmount_data">0 kr.</div>
+            </li>
+            <li>
+                <div class="costs">Samlede omkostninger</div>
+                <div class="costs_data">0 kr.</div>
+            </li>
+            <li>
+                <div class="payment">Samlet ydelse</div>
+                <div class="payment_data">0 kr.</div>
+            </li>
+            <li>
+                <div class="AAOP">ÅOP</div>
+                <div class="AAOP_data">4,3%</div>
+            </li>
+            <li>
+                <div class="AAOP-tax">ÅOP efter skat</div>
+                <div class="AAOP-tax_data">2,3%</div>
+            </li>
+            <li>
+                <div class="runtime">Løbetid</div>
+                <div class="runtime_data">12 mdr.</div>
+            </li>
+            <li>
+                <div class="monthlyPayment">Månedlig ydelse</div>
+                <div class="monthlyPayment_data">1234,56 kr.</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="js/calculator.js"></script>
+</body>
+</html>

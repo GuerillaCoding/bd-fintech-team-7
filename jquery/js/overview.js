@@ -102,6 +102,7 @@ var overview = (function () {
                 data: accountBalances
             }]
         });
+        $('#container').highcharts();
     };
 
     //public functions
