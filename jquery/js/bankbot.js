@@ -15,7 +15,7 @@ var bot = (function () {
 
     //add click listeners
     var bindListeners = function () {
-        $('#submit-btn').on('click', function (e) {
+        $('.input-wrapper').submit(function (e) {
             sendMessage();
             return false;
         });
