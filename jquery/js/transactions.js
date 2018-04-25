@@ -70,7 +70,7 @@ var transactions = (function () {
 
         if (reExp.test(url)) {
             // update
-            var reExp = new RegExp("[\?&]" + key + "=([^&#]*)");
+            reExp = new RegExp("[\?&]" + key + "=([^&#]*)");
             var delimiter = reExp.exec(url)[0].charAt(0);
             url = url.replace(reExp, delimiter + key + "=" + val);
         } else {
