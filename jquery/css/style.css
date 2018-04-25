@@ -193,6 +193,10 @@ header .triangle3 {
     font-size: 2rem;
 }
 
+#transactions .to-top {
+    float: right;
+}
+
 /*END: kontobevægelser*/
 
 /*overblik*/
